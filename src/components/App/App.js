@@ -44,7 +44,14 @@ function App() {
       {loading ? (
         <span>Loading</span>
       ) : (
-        <Table companies={companies} isLoanding={loading} hasError={hasError} />
+        <>
+          <Table
+            companies={companies}
+            isLoanding={loading}
+            hasError={hasError}
+          />
+          {console.log(companies[0])}
+        </>
       )}
       <hr />
       <span>Has error: {JSON.stringify(hasError)}</span>

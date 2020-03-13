@@ -2,27 +2,20 @@ import React from "react";
 import "./MyTable.scss";
 import MaterialTable from "material-table";
 
-export default function MyTable() {
+export default function MyTable({ companies }) {
   const [state, setState] = React.useState({
     columns: [
+      { title: "ID", field: "id", type: "numeric" },
       { title: "Name", field: "name" },
-      { title: "Surname", field: "surname" },
-      { title: "Birth Year", field: "birthYear", type: "numeric" },
+      { title: "City", field: "city" },
       {
-        title: "Birth Place",
-        field: "birthCity",
-        lookup: { 34: "İstanbul", 63: "Şanlıurfa" }
+        title: "Total income",
+        field: "income",
+        type: "numeric"
       }
     ],
-    data: [
-      { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
-      {
-        name: "Zerya Betül",
-        surname: "Baran",
-        birthYear: 2017,
-        birthCity: 34
-      }
-    ]
+
+    data: companies
   });
 
   return (
