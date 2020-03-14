@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import "./App.scss";
 import Table from "../MyTable";
+import Company from "../Company";
 
 function App() {
   const urlCompanies = "https://recruitment.hal.skygate.io/companies";
@@ -8,9 +11,10 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [hasError, setErrors] = useState(false);
   const [companies, setCompanies] = useState([]);
+  const useMountEffect = fun => useEffect(fun, []);
 
   function sum(arr) {
-    let sum = arr.reduce((a, b) => a + b.value * 1, 0);
+    let sum = arr.reduce((a, b) => a + b.value * 1, 0).toFixed(2);
     return sum;
   }
 
@@ -18,7 +22,7 @@ function App() {
     let data = [];
     try {
       data = await (await fetch(urlCompanies)).json();
-      await Promise.all(
+      let people = await Promise.all(
         data.map(async item => {
           const res = await (await fetch(`${urlIncomes}${item.id}`)).json();
           item.income = sum(res.incomes);
@@ -26,36 +30,46 @@ function App() {
           return item;
         })
       );
-      data.sort((a, b) => b.income * 1 - a.income * 1);
-      setCompanies(data);
+      people.sort((a, b) => b.income * 1 - a.income * 1);
+      setCompanies(people);
     } catch (err) {
       setErrors(err);
     }
   }
 
-  useEffect(() => {
-    fetchData().then(() => {
-      setLoading(false);
-    });
-  }, []);
+  const searchCompany = id => {
+    console.log(id);
+    const company = companies.filter(item => item.id * 1 === id * 1);
+    return company[0];
+  };
+
+  useMountEffect(() => {
+    fetchData().then(setLoading(false));
+  });
 
   return (
-    <div>
-      {loading ? (
-        <span>Loading</span>
-      ) : (
-        <>
-          <Table
-            companies={companies}
-            isLoanding={loading}
-            hasError={hasError}
-          />
-          {console.log(companies[0])}
-        </>
-      )}
-      <hr />
-      <span>Has error: {JSON.stringify(hasError)}</span>
-    </div>
+    <Router>
+      <Switch>
+        <Route
+          path="/"
+          exact
+          component={() => (
+            <Table
+              companies={companies}
+              loading={loading}
+              hasError={hasError}
+            />
+          )}
+        />
+        <Route
+          path="/company/:id"
+          component={props => (
+            <Company company={searchCompany(props.match.params.id)} />
+          )}
+        />
+        <Route path="/" render={() => <div>404</div>} />
+      </Switch>
+    </Router>
   );
 }
 
