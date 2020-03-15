@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 export default function MyTable({ companies, loading }) {
   const [data, setData] = useState(companies);
   const [isLoading, setLoading] = useState(loading);
-  const useMountEffect = fun => useEffect(fun, [companies]);
+
+  const useLoandingEffect = fun => useEffect(fun, [loading]);
   const columns = [
     {
       title: "ID",
@@ -28,8 +29,8 @@ export default function MyTable({ companies, loading }) {
     ),
     ...c
   }));
-  useMountEffect(() => {
-    companies && setData(companies);
+  useLoandingEffect(() => {
+    companies.id && setData(companies);
     setLoading(loading);
   });
   return (
