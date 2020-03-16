@@ -1,10 +1,10 @@
 # Company Incomes App
 
-=====
+---
 
 This is a react.js application based on by Material Table and nivo that provides the ability to track companies incomes.
 
-![App Preview](https://ecuki.github.io/company-incomes/)
+[App Preview](https://ecuki.github.io/company-incomes/)
 
 ---
 
