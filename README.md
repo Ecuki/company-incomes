@@ -1,6 +1,82 @@
+# Company Incomes App
+
+=====
+
+This is a react.js application based on by Material Table and nivo that provides the ability to track companies incomes.
+
+![App Preview](https://ecuki.github.io/company-incomes/)
+
+---
+
+## Features
+
+- Material Design
+- Data sorting
+- Data searching
+- Company details site
+- Total income
+- Average of company incomes
+- Incomes for period
+- Incomes Bar Chart
+
+.
+![Table](!!!)
+
+.
+![Company details site](!!!)
+
+#### Data :
+
+- Company ID
+- Company name
+- Company city
+- Company total income
+
+#### Data sorting:
+
+- Click on column **Header** to sort data
+- Click again to sort from the end
+- Click again and back to initial state
+
+#### Data searching:
+
+- Search in all data by text and numbers
+
+#### Company details site:
+
+- Main information about the company
+- "Average incomes" - average of company incomes in data rage set in "Start" end "End".
+- "Income for period" - company income in data rage set in "Start" end "End".
+- "Start date" - by default, the first day of this month.
+- "End date" - today's date by default.
+
+#### Incomes Bar Chart:
+
+- Shows the sums of the company's monthly incomes from all data
+
+---
+
+## Setup
+
+Clone this repo to your desktop and run `npm install` to install all the dependencies.
+
+You might want to look into `config.json` to make change the port you want to use and set up a SSL certificate.
+
+---
+
+## Usage
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+```
+git clone https://github.com/Ecuki/company-incomes
+```
+
+After you clone this repo to your desktop, go to its root directory and run `npm install` to install its dependencies.
+
+```
+npm install
+```
 
 In the project directory, you can run:
 
@@ -37,32 +113,15 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> You can check out the full license [here](https://github.com/Ecuki/company-incomes/blob/master/LIcense.txt)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Acknowledgments
 
-### Code Splitting
+Inspiration, code snippets, etc.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- [Add a README and a License](http://www.davidketcheson.info/2015/05/13/add_a_readme.html)
+- [awesome-readme](https://github.com/igorantun/node-chat/blob/master/README.md)
+- [readme-template](https://gist.github.com/DomPizzie/7a5ff55ffa9081f2de27c315f5018afc)
+- [How to write a good README](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
