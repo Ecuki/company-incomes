@@ -20,10 +20,10 @@ This is a react.js application based on by Material Table and nivo that provides
 - Incomes Bar Chart
 
 .
-![Table](!!!)
+![Table](https://github.com/Ecuki/company-incomes/blob/master/src/assets/table_preview.jpg)
 
 .
-![Company details site](!!!)
+![Company details site](https://github.com/Ecuki/company-incomes/blob/master/src/assets/company_preview.jpg)
 
 #### Data :
 
