@@ -60,15 +60,11 @@ This is a react.js application based on by Material Table and nivo that provides
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-```
-git clone https://github.com/Ecuki/company-incomes
-```
+### `git clone https://github.com/Ecuki/company-incomes`
 
 After you clone this repo to your desktop, go to its root directory and run `npm install` to install its dependencies.
 
-```
-npm install
-```
+### `npm install`
 
 In the project directory, you can run:
 
