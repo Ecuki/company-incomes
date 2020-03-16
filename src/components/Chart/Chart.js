@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import { ResponsiveBar } from "@nivo/bar";
+import Spinner from "../Spinner";
 import "./Chart.scss";
 
 export default function Chart({ data }) {
   const [loading, setLoading] = useState(true);
   const [dataSet, setDataSet] = useState(data);
-  // const useDataEffect = fun => useEffect(fun, [data]);
+
   const isInitialMount = useRef(true);
 
   useEffect(() => {
@@ -14,73 +15,60 @@ export default function Chart({ data }) {
     } else {
       setDataSet(data);
       setLoading(false);
-      // Your useEffect code here to be run on update
     }
   }, [data]);
 
   return (
-    <>
+    <div className="chart">
       {!loading ? (
         <ResponsiveBar
+          className="myChart"
           data={dataSet}
           keys={["value"]}
           indexBy="date"
-          margin={{ top: 50, right: 130, bottom: 50, left: 100 }}
-          colors={{ scheme: "nivo" }}
+          margin={{ top: 10, right: 30, bottom: 30, left: 90 }}
+          colors={"#222299"}
           borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
           axisTop={null}
           axisRight={null}
-          className="chart"
+          layout="horizontal"
+          maxValue={
+            Math.max.apply(
+              Math,
+              dataSet.map(function(o) {
+                return o.value;
+              })
+            ) + 5000
+          }
           axisBottom={{
             tickSize: 5,
             tickPadding: 5,
+            tickValues: 7,
             tickRotation: 0,
-            legend: "month",
-            legendPosition: "middle",
-            legendOffset: 32
+            legend: null,
+            legendPosition: "end",
+            legendOffset: 32,
+            format: ".0s"
           }}
           axisLeft={{
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: "income",
+            legend: null,
             legendPosition: "middle",
-            legendOffset: -40
+            legendOffset: -60
           }}
+          padding={0.3}
           labelSkipWidth={12}
           labelSkipHeight={12}
-          labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
-          legends={[
-            {
-              dataFrom: "keys",
-              anchor: "bottom-right",
-              direction: "column",
-              justify: false,
-              translateX: 120,
-              translateY: 0,
-              itemsSpacing: 2,
-              itemWidth: 100,
-              itemHeight: 20,
-              itemDirection: "left-to-right",
-              itemOpacity: 0.85,
-              symbolSize: 20,
-              effects: [
-                {
-                  on: "hover",
-                  style: {
-                    itemOpacity: 1
-                  }
-                }
-              ]
-            }
-          ]}
+          labelTextColor={"transparent"}
           animate={true}
           motionStiffness={90}
           motionDamping={15}
         />
       ) : (
-        <div>Loanding</div>
+        <Spinner />
       )}
-    </>
+    </div>
   );
 }

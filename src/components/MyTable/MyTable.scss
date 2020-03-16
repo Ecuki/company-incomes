@@ -1,8 +1,58 @@
 a {
   text-decoration: none;
 }
+
 .MuiTableBody-root {
   .MuiTableRow-root:nth-child(odd) {
     background-color: #ddd;
+  }
+}
+
+th.MuiTableCell-root,
+td.MuiTableCell-root {
+  @media (max-width: 375px) {
+    padding: 10px;
+  }
+  @media (min-width: 568px) {
+    font-size: 1.2rem;
+  }
+  @media (min-width: 768px) {
+    font-size: 1.3rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 1.5rem;
+  }
+}
+.MTableToolbar-title-37 {
+  padding: 30px 0;
+  @media (max-width: 568px) {
+    overflow: auto;
+    height: 80px;
+
+    display: block;
+  }
+  @media (min-width: 768px) and(orientation:portrait) {
+    overflow: auto;
+    height: 80px;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .MuiTypography-h6 {
+    @media (max-width: 568px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      white-space: normal !important;
+    }
+    @media (min-width: 568px) {
+      font-size: 1.7rem;
+    }
+    @media (min-width: 768px) and(orientation:portrait) {
+      font-size: 2.2rem;
+    }
   }
 }

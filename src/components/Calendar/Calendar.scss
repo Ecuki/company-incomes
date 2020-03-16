@@ -1,0 +1,49 @@
+.calendar {
+  padding: 10px 20px 0 20px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  opacity: 0.8;
+  @media (min-width: 411px) {
+    font-size: 1.3rem;
+  }
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 1.7rem;
+  }
+  &__element {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    padding: 0 20px 10px 0;
+    span {
+      width: 30%;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      font-weight: 600;
+    }
+    input {
+      cursor: pointer;
+      border: 2px solid #ddd;
+      text-align: right;
+      width: 50%;
+      font-size: 1rem;
+      padding: 5px 10px;
+      @media (min-width: 411px) {
+        font-size: 1.3rem;
+      }
+      @media (min-width: 768px) {
+        font-size: 1.5rem;
+        padding: 5px 10px;
+      }
+      @media (min-width: 1024px) {
+        font-size: 1.7rem;
+      }
+    }
+  }
+}

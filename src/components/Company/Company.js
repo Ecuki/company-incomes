@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import CompanyDetails from "../CompanyDetails";
 import Calendar from "../Calendar";
 import Chart from "../Chart";
+import { Link } from "react-router-dom";
 import { sum } from "../helpers";
 import "./Company.scss";
 
@@ -15,26 +15,49 @@ function Company({ company, loading }) {
     income: ""
   });
 
+  const [periodIncomes, setPeriodIncomese] = useState({
+    average: "",
+    total: "",
+    months: [
+      {
+        income: "",
+        date: ""
+      }
+    ]
+  });
+
+  const details = [
+    ["name", "Name:", data.name],
+    ["ID", "ID:", data.id],
+    ["city", "City:", data.city],
+    ["income", "Total income:", data.income],
+    ["income-average", "Average incomes:", periodIncomes.average],
+    ["income-period", "Income for period:", periodIncomes.total]
+  ];
+
   const [date, setDate] = useState({
     start: new Date(new Date().setHours(0, 0, 0, 0)).setDate(1),
     end: new Date().getTime()
   });
 
-  function handleClick() {
-    history.goBack();
-  }
-
   const useMountEffect = fun => useEffect(fun, [loading]);
   const useDateEffect = fun => useEffect(fun, [date]);
-  let history = useHistory();
-  const [periodIncomes, setPeriodIncomese] = useState({
-    average: "",
-    total: "",
-    months: {
-      income: "",
-      date: ""
+
+  useDateEffect(() => {
+    if (company) {
+      const periodIncomes = calcPeriodIncomes();
+      setPeriodIncomese(periodIncomes);
     }
   });
+
+  useMountEffect(() => {
+    if (company) {
+      setData(company);
+      const periodIncomes = calcPeriodIncomes();
+      setPeriodIncomese(periodIncomes);
+    }
+  });
+
   const getMonthsIncomes = incomes => {
     const dates = incomes.map(income => income.date.slice(0, 7));
     const months = Array.from(new Set(dates));
@@ -76,28 +99,6 @@ function Company({ company, loading }) {
     setDate(newDate);
   };
 
-  useDateEffect(() => {
-    if (company) {
-      const periodIncomes = calcPeriodIncomes();
-      setPeriodIncomese(periodIncomes);
-    }
-  });
-
-  useMountEffect(() => {
-    if (company) {
-      setData(company);
-      const periodIncomes = calcPeriodIncomes();
-      setPeriodIncomese(periodIncomes);
-    }
-  });
-  const details = [
-    ["name", "Company:", data.name],
-    ["ID", "ID:", data.id],
-    ["city", "City:", data.city],
-    ["income", "Total income:", data.income],
-    ["income-average", "Average of company incomes:", periodIncomes.average],
-    ["income-period", "Income for period:", periodIncomes.total]
-  ];
   const showCompanyDetail = () => {
     return details.map(detail => (
       <CompanyDetails
@@ -110,12 +111,14 @@ function Company({ company, loading }) {
   };
   return (
     <div className="company">
-      <button onClick={handleClick}>Back</button>
+      <Link to="/">
+        <i className="material-icons">arrow_back</i>Back
+      </Link>
       <h2 className="company__header">Company details</h2>
       {showCompanyDetail()}
       <Calendar date={date} onChange={handleDataChange} />
-      {console.log(periodIncomes.months)}
-      {loading ? <div>Loanding</div> : <Chart data={periodIncomes.months} />}
+      <h2 className="company__header">Monthly incomes</h2>
+      <Chart data={periodIncomes.months} />
     </div>
   );
 }

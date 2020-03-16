@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Table from "../MyTable";
 import Company from "../Company";
+import NotFoundPage from "../NotFoundPage";
 import { sum } from "../helpers";
 import "./App.scss";
 
@@ -48,13 +49,7 @@ function App() {
         <Route
           path="/"
           exact
-          component={() => (
-            <Table
-              companies={companies}
-              loading={loading}
-              hasError={hasError}
-            />
-          )}
+          component={() => <Table companies={companies} />}
         />
         <Route
           path="/company/:id"
@@ -65,7 +60,7 @@ function App() {
             />
           )}
         />
-        <Route path="/" render={() => <div>404</div>} />
+        <Route path="/" component={NotFoundPage} />
       </Switch>
     </Router>
   );

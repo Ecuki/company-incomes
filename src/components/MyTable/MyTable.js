@@ -1,13 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./MyTable.scss";
 import MaterialTable from "material-table";
 import { Link } from "react-router-dom";
 
-export default function MyTable({ companies, loading }) {
+export default function MyTable({ companies }) {
   const [data, setData] = useState(companies);
-  const [isLoading, setLoading] = useState(loading);
 
-  const useLoandingEffect = fun => useEffect(fun, [loading]);
+  const isInitialMount = useRef(true);
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      setData(companies);
+    }
+  }, [companies]);
+
   const columns = [
     {
       title: "ID",
@@ -29,21 +37,24 @@ export default function MyTable({ companies, loading }) {
     ),
     ...c
   }));
-  useLoandingEffect(() => {
-    companies.id && setData(companies);
-    setLoading(loading);
-  });
+
   return (
     <MaterialTable
-      title="Company incomes"
+      title="Company Incomes"
       columns={columns}
       data={data}
-      isLoading={isLoading}
+      isLoading={data[0] ? false : true}
       options={{
         headerStyle: {
-          backgroundColor: "#121299",
+          backgroundColor: "#9933ff",
           color: "#fff",
           fontWeight: 600
+        },
+        activeSortIcon: {
+          opacity: 0.5
+        },
+        inactiveSortIcon: {
+          opacity: 0.7
         }
       }}
     />

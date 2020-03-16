@@ -1,0 +1,27 @@
+.chart {
+  height: 50vh;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 30px;
+
+  text {
+    @media (min-width: 375px) {
+      font-size: 1rem !important;
+    }
+    @media (min-width: 411px) {
+      font-size: 1.1rem !important;
+    }
+    @media (min-width: 768px) {
+      font-size: 1.2rem !important;
+    }
+    @media (min-width: 1024px) {
+      font-size: 1.4rem !important;
+    }
+  }
+  @media (min-width: 768px) {
+    height: 70vh;
+  }
+}
