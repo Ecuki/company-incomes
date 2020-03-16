@@ -9,13 +9,14 @@ import "./App.scss";
 function App() {
   const URL_COMPANIES = "https://recruitment.hal.skygate.io/companies";
   const URL_INCOMES = "https://recruitment.hal.skygate.io/incomes/";
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [hasError, setErrors] = useState(false);
   const [companies, setCompanies] = useState([]);
   const useMountEffect = fun => useEffect(fun, []);
 
   async function fetchData() {
     try {
+      setLoading(true);
       let data = await (await fetch(URL_COMPANIES)).json();
       let company = await Promise.all(
         data.map(async item => {
@@ -29,6 +30,7 @@ function App() {
       );
       company.sort((a, b) => b.income * 1 - a.income * 1);
       setCompanies(company);
+      setLoading(false);
     } catch (err) {
       setErrors(err);
     }
@@ -40,7 +42,7 @@ function App() {
   };
 
   useMountEffect(() => {
-    fetchData().then(setLoading(false));
+    fetchData();
   });
 
   return (
@@ -52,7 +54,7 @@ function App() {
           component={() => <Table companies={companies} />}
         />
         <Route
-          path="/company/:id"
+          path="/:id"
           component={props => (
             <Company
               company={searchCompany(props.match.params.id)}

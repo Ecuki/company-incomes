@@ -101,6 +101,15 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Dependencies
+
+- [Material-UI](https://material-ui.com/getting-started/installation/)
+- [nivo](https://github.com/plouc/nivo)
+- [material-table](https://github.com/mbrn/material-table)
+- [Node-sass](https://github.com/sass/node-sass)
+- [React Router](https://github.com/ReactTraining/react-router)
+- [React Datepicker](https://reactdatepicker.com/)
+
 ## License
 
 > You can check out the full license [here](https://github.com/Ecuki/company-incomes/blob/master/LIcense.txt)
@@ -109,7 +118,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 Inspiration, code snippets, etc.
 
-- [Add a README and a License](http://www.davidketcheson.info/2015/05/13/add_a_readme.html)
+- [Add-a-README-and-a-License](http://www.davidketcheson.info/2015/05/13/add_a_readme.html)
 - [awesome-readme](https://github.com/igorantun/node-chat/blob/master/README.md)
 - [readme-template](https://gist.github.com/DomPizzie/7a5ff55ffa9081f2de27c315f5018afc)
 - [How to write a good README](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)

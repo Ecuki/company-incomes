@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { sum } from "../helpers";
 import "./Company.scss";
 
-function Company({ company, loading }) {
+function Company({ company }) {
   const [data, setData] = useState({
     id: "",
     name: "",
@@ -40,7 +40,7 @@ function Company({ company, loading }) {
     end: new Date().getTime()
   });
 
-  const useMountEffect = fun => useEffect(fun, [loading]);
+  const useMountEffect = fun => useEffect(fun, []);
   const useDateEffect = fun => useEffect(fun, [date]);
 
   useDateEffect(() => {

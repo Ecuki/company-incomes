@@ -3,7 +3,7 @@ import "./MyTable.scss";
 import MaterialTable from "material-table";
 import { Link } from "react-router-dom";
 
-export default function MyTable({ companies }) {
+export default function MyTable({ companies, loading }) {
   const [data, setData] = useState(companies);
 
   const isInitialMount = useRef(true);
@@ -31,7 +31,7 @@ export default function MyTable({ companies }) {
     }
   ].map(c => ({
     render: row => (
-      <Link to={`/company/${row.id}`}>
+      <Link to={`/${row.id}`}>
         {c.lookup ? c.lookup[row[c.field]] : row[c.field]}
       </Link>
     ),
