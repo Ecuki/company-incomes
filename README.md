@@ -56,14 +56,6 @@ This is a react.js application based on by Material Table and nivo that provides
 
 ---
 
-## Setup
-
-Clone this repo to your desktop and run `npm install` to install all the dependencies.
-
-You might want to look into `config.json` to make change the port you want to use and set up a SSL certificate.
-
----
-
 ## Usage
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
