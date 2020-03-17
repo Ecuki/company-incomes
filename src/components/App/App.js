@@ -33,6 +33,7 @@ function App() {
       setLoading(false);
     } catch (err) {
       setErrors(err);
+      throw hasError;
     }
   }
 
