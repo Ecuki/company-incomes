@@ -31,7 +31,7 @@ export default function MyTable({ companies, loading }) {
     }
   ].map(c => ({
     render: row => (
-      <Link to={`/${row.id}`}>
+      <Link to={`/company-incomes/${row.id}`}>
         {c.lookup ? c.lookup[row[c.field]] : row[c.field]}
       </Link>
     ),

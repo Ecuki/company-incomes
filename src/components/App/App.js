@@ -55,7 +55,7 @@ function App() {
           component={() => <Table companies={companies} />}
         />
         <Route
-          path="company-incomes/:id"
+          path="/company-incomes/:id"
           component={props => (
             <Company
               company={searchCompany(props.match.params.id)}
