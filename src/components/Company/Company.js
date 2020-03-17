@@ -111,7 +111,7 @@ function Company({ company }) {
   };
   return (
     <div className="company">
-      <Link to="/">
+      <Link to="/company-incomes">
         <i className="material-icons">arrow_back</i>Back
       </Link>
       <h2 className="company__header">Company details</h2>

@@ -50,12 +50,12 @@ function App() {
     <Router>
       <Switch>
         <Route
-          path="/"
+          path="/company-incomes"
           exact
           component={() => <Table companies={companies} />}
         />
         <Route
-          path="/:id"
+          path="company-incomes/:id"
           component={props => (
             <Company
               company={searchCompany(props.match.params.id)}
@@ -63,7 +63,7 @@ function App() {
             />
           )}
         />
-        <Route path="/" component={NotFoundPage} />
+        <Route path="company-incomes/" component={NotFoundPage} />
       </Switch>
     </Router>
   );
